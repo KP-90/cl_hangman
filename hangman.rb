@@ -6,22 +6,25 @@ MAX_TURNS = 7
 
 class Hangman
 
-    attr_reader :turns
-    attr_accessor :word, :display
+    attr_reader :turns, :word, :display
 
     def initialize()
         @turns = 0
-        contents = File.readlines("valid_words.txt")
         @letters = ""
         @display = ""
         @wrong = ""
-        @word = contents[rand(0..contents.length)]
+        contents = File.readlines("valid_words.txt")
+        #Pick a random word from the file
+        @word = contents[rand(0..contents.length - 1)]
+        #Get rid of the newline character
         @word = word.strip
         @display = Array.new(@word.length, "_").join(" ")
+
         puts "There are #{@word.length} letters in this word"
     end
 
     def draw()
+        #If the guessed leters are empty, create an array of just '_'
         if @letters == ""
             @display = Array.new(@word.length, "_").join(" ")
         else
@@ -75,5 +78,6 @@ def play_game()
         end
     end
 end
+
 system("clear")
 play_game()
