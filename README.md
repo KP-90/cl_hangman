@@ -1,4 +1,4 @@
-#Hangman 
+# Hangman 
 
 A simple hangman game that is played in the command line.
 
